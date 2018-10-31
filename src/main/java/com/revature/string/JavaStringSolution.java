@@ -8,7 +8,7 @@ public class JavaStringSolution implements JavaString{
 	public int parseInteger(String number) throws IllegalArgumentException {
 		if (number == null)
 			throw new IllegalArgumentException("Can't have null String!");
-		boolean isNeg = false;
+		int isNeg = 1;
 		int returnVal = 0;
 		for(int i = 0; i < number.length(); i++) {
 			if(Character.isDigit(number.charAt(i))) {
@@ -16,16 +16,13 @@ public class JavaStringSolution implements JavaString{
 				returnVal = Integer.parseInt(temp);
 			}
 			else if(number.charAt(i) == '-' && i == 0) {
-				isNeg = true;
+				isNeg = -1;
 			}
 			else {
 				throw new IllegalArgumentException("Can't have nondigit value!");
 			}
 		}
-		if (isNeg == true) {
-			returnVal *= -1;
-		}
-		return returnVal;
+		return returnVal * isNeg;
 	}
 
 	@Override
